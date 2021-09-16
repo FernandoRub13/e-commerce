@@ -1,0 +1,16 @@
+.formRow{
+  input{
+    height: 3rem;
+    display:block;
+    width: 100%;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin: 10px auto;
+    padding: 15px auto;
+    border: 1px solid #9e9e9e;
+    outline: none;
+  }
+  .formWrap{
+    margin: 3rem auto 0;
+  }
+}

@@ -1,11 +1,10 @@
 import React from 'react'
 import './styles.scss'
+import Signup from '../../components/Signup';
 
 class Registration extends React.Component {
   render() { 
-    return <div>
-      <h1>Registration</h1>
-    </div>;
+    return <Signup />;
   }
 }
  
