@@ -2,14 +2,14 @@ import React from 'react'
 import './styles.scss'
 import {auth, handleUserProfile} from '../../../firebase/utils'
 
-const FormInput = ({hanldeChange, label, ...otherProps}) => {
+const FormInput = ({handleChange, label, ...otherProps}) => {
   return (
     <div className="formRow">
       {label && (
         <label>{label}</label>
       ) }
 
-      <input onChange={hanldeChange} className="formInput" {...otherProps} />
+      <input onChange={handleChange} className="formInput" {...otherProps} />
     </div>
   )
 }
