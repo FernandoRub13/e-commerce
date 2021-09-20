@@ -1,19 +1,20 @@
 import React, {  useEffect, useState } from "react";
-import { withRouter } from "react-router";
+import { useHistory } from "react-router";
 import "./styles.scss";
 import FormInput from "../forms/FormInput";
 import Button from "../forms/Button";
 import AuthWrapper from "../AuthWrapper";
-import { signUpUser } from "../../redux/User/user.action";
+import { signUpUserStart } from "../../redux/User/user.action";
 import { useDispatch, useSelector } from "react-redux";
 
 const mapState = ({user}) =>({
-  signUpSuccess: user.signUpSuccess,
-  signUpError: user.signUpError
+  currentUser: user.currentUser,
+  userErr: user.userErr
 })
 
 const Signup = (props) => {
-  const {signUpSuccess, signUpError} = useSelector(mapState)
+  const {currentUser, userErr} = useSelector(mapState)
+  const history = useHistory()
   const dispatch = useDispatch()
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,17 +23,17 @@ const Signup = (props) => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    if(signUpSuccess){
+    if(currentUser){
       resetForm()
-      props.history.push("/")
+      history.push("/")
     }
-  }, [signUpSuccess])
+  }, [currentUser])
 
   useEffect(() => {
-    if(Array.isArray(signUpError) && signUpError.length>0){
-      setErrors(signUpError)
+    if(Array.isArray(userErr) && userErr.length>0){
+      setErrors(userErr)
     }
-  }, [signUpError])
+  }, [userErr])
 
   const resetForm = () => {
     setDisplayName("");
@@ -44,7 +45,7 @@ const Signup = (props) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(signUpUser({
+    dispatch(signUpUserStart({
       displayName,
       email,
       password,
@@ -103,4 +104,4 @@ const Signup = (props) => {
   );
 };
 
-export default withRouter(Signup);
+export default Signup;
