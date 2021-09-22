@@ -14,16 +14,18 @@ import WithAdminAuth from "./hoc/withAdminAuth";
 // Layouts
 import MainLayout from "./layouts/MainLayout";
 import HomepageLayout from "./layouts/HomepageLayout";
-import AdminLayout from './layouts/AdminLayout';
-import DashboardLayout from './layouts/DashboardLayout';
+import AdminLayout from "./layouts/AdminLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
 
 // Pages
 import Homepage from "./pages/Homepage";
+import Search from "./pages/Search";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Recovery from "./pages/Recovery";
 import Admin from "./pages/Admin";
+import ProductDetails from "./pages/ProductDetails";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ const App = (props) => {
 
   return (
     <div className="App">
-        <AdminToolbar></AdminToolbar>
+      <AdminToolbar></AdminToolbar>
       <Switch>
         <Route
           exact
@@ -43,6 +45,33 @@ const App = (props) => {
             <HomepageLayout>
               <Homepage />
             </HomepageLayout>
+          )}
+        />
+          <Route
+            exact
+            path="/search"
+            render={() => (
+              <MainLayout>
+                <Search />
+              </MainLayout>
+            )}
+          />
+        <Route
+          
+          path="/search/:filterType"
+          render={() => (
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          )}
+        />
+        <Route
+          
+          path="/product/:productID"
+          render={() => (
+            <MainLayout>
+              <ProductDetails />
+            </MainLayout>
           )}
         />
         <Route
