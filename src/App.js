@@ -26,6 +26,7 @@ import Dashboard from "./pages/Dashboard";
 import Recovery from "./pages/Recovery";
 import Admin from "./pages/Admin";
 import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -56,8 +57,7 @@ const App = (props) => {
               </MainLayout>
             )}
           />
-        <Route
-          
+        <Route         
           path="/search/:filterType"
           render={() => (
             <MainLayout>
@@ -71,6 +71,15 @@ const App = (props) => {
           render={() => (
             <MainLayout>
               <ProductDetails />
+            </MainLayout>
+          )}
+        />
+        <Route
+          
+          path="/cart"
+          render={() => (
+            <MainLayout>
+              <Cart />
             </MainLayout>
           )}
         />
