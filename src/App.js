@@ -27,6 +27,7 @@ import Recovery from "./pages/Recovery";
 import Admin from "./pages/Admin";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Payment from "./pages/Payment";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -48,16 +49,16 @@ const App = (props) => {
             </HomepageLayout>
           )}
         />
-          <Route
-            exact
-            path="/search"
-            render={() => (
-              <MainLayout>
-                <Search />
-              </MainLayout>
-            )}
-          />
-        <Route         
+        <Route
+          exact
+          path="/search"
+          render={() => (
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          )}
+        />
+        <Route
           path="/search/:filterType"
           render={() => (
             <MainLayout>
@@ -66,7 +67,6 @@ const App = (props) => {
           )}
         />
         <Route
-          
           path="/product/:productID"
           render={() => (
             <MainLayout>
@@ -75,12 +75,21 @@ const App = (props) => {
           )}
         />
         <Route
-          
           path="/cart"
           render={() => (
             <MainLayout>
               <Cart />
             </MainLayout>
+          )}
+        />
+        <Route
+          path="/payment"
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <Payment />
+              </MainLayout>
+            </WithAuth>
           )}
         />
         <Route

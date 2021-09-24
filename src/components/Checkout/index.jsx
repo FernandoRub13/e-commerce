@@ -13,6 +13,7 @@ const mapState = createStructuredSelector({
 });
 
 const Checkout = () => {
+  
   const { cartItems, total } = useSelector(mapState);
 
   const errMsg = "Your cart is empty!";
@@ -72,7 +73,7 @@ const Checkout = () => {
                           <Button onClick={() => history.goBack()} >Continue shopping</Button>
                         </td>
                         <td>
-                          <Button>Checkout</Button>
+                          <Button onClick={()=> history.push('/payment')} >Checkout</Button>
                         </td>
                       </tr>
                     </tbody>
